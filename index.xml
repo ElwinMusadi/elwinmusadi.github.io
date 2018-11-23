@@ -5,10 +5,22 @@
     <link>https://elwinmusadi.github.io/</link>
     <description>Recent content on ElwinMusadi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 23 Nov 2018 04:17:24 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Nov 2018 16:48:41 +0800</lastBuildDate>
     
 	<atom:link href="https://elwinmusadi.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tentang Saya : Programmer Pemula</title>
+      <link>https://elwinmusadi.github.io/about/</link>
+      <pubDate>Fri, 23 Nov 2018 16:48:41 +0800</pubDate>
+      
+      <guid>https://elwinmusadi.github.io/about/</guid>
+      <description>Hello World!  Selamat datang di blog saya.
+Perkenalkan, nama saya Elwin Musadi Bessiesura. Biasa dipanggil Elwin, saya adalah seorang mahasiswa Teknik Informatika di salah satu perguruan tinggi swasta STIKOM Artha Buana Kupang.
+Pernah bersekolah di SMK Negeri 2 Kupang dengan jurusan Multimedia.
+Kenapa membuat blog ini? Blog ini dibuat hanya sebagai bahan pembelajaran saya untuk belajar web programming dengan Bootstrap, Codeigniter, dan Hugo. Blog ini digunakan sebagai catatan saat belajar pemrograman dan menulis tugas kuliah.</description>
+    </item>
     
     <item>
       <title>Menggambar Emoticon Smile Dengan Java</title>
