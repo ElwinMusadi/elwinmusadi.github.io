@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Teknik Kompilasi - Analisis Leksikal</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+<meta itemprop="name" content="Teknik Kompilasi - Analisis Leksikal">
+<meta itemprop="description" content="Bagi yang pernah mengambil mata kuliah Teknik Kompilasi, pasti pernah mendengar tentang Analisis Leksikal.
+Apa itu Analisis Leksikal?
+Pada artikel ini kita akan membahas apa itu Analisis leksikal, bagaimana prosesnya dan contohnya.
+Menurut Wikipedia, Analisis leksikal adalah sebuah proses yang mendahului parsing sebuah rangkaian karakter. Ia menerima masukan serangkaian karakter (seperti dalam dokumen plaint-text atau source code) dan menghasilkan deretan simbol yang masing-masing dinamakan token; proses parsing akan lebih mudah dilakukan bila inputnya sudah berupah token.">
+
+
+<meta itemprop="datePublished" content="2018-11-24T16:03:36&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-24T16:03:36&#43;08:00" />
+<meta itemprop="wordCount" content="977">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+<meta property="og:title" content="Teknik Kompilasi - Analisis Leksikal" />
+<meta property="og:description" content="Bagi yang pernah mengambil mata kuliah Teknik Kompilasi, pasti pernah mendengar tentang Analisis Leksikal.
+Apa itu Analisis Leksikal?
+Pada artikel ini kita akan membahas apa itu Analisis leksikal, bagaimana prosesnya dan contohnya.
+Menurut Wikipedia, Analisis leksikal adalah sebuah proses yang mendahului parsing sebuah rangkaian karakter. Ia menerima masukan serangkaian karakter (seperti dalam dokumen plaint-text atau source code) dan menghasilkan deretan simbol yang masing-masing dinamakan token; proses parsing akan lebih mudah dilakukan bila inputnya sudah berupah token." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://elwinmusadi.github.io/artikel/analisis-leksikal/" /><meta property="article:published_time" content="2018-11-24T16:03:36&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-24T16:03:36&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Teknik Kompilasi - Analisis Leksikal"/>
+<meta name="twitter:description" content="Bagi yang pernah mengambil mata kuliah Teknik Kompilasi, pasti pernah mendengar tentang Analisis Leksikal.
+Apa itu Analisis Leksikal?
+Pada artikel ini kita akan membahas apa itu Analisis leksikal, bagaimana prosesnya dan contohnya.
+Menurut Wikipedia, Analisis leksikal adalah sebuah proses yang mendahului parsing sebuah rangkaian karakter. Ia menerima masukan serangkaian karakter (seperti dalam dokumen plaint-text atau source code) dan menghasilkan deretan simbol yang masing-masing dinamakan token; proses parsing akan lebih mudah dilakukan bila inputnya sudah berupah token."/>
+
+
+
+
+<link rel="icon" href="/img/Logo-KodingLabs.png" class="d-inline-block align-top rounded-circle" />
+
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/prism.css" />
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-80517197-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top" style="z-index:1025">
+        <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+        
+    <div class="container">    
+            
+        <a style="font-family: 'Allerta Stencil', sans-serif"; class="navbar-brand" href="https://elwinmusadi.github.io"><img src="/img/Logo-KodingLabs.png" width="30" height="30" class="d-inline-block align-top"
+            alt=""> ElwinMusadi</a>
+           
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://elwinmusadi.github.io">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!" data-toggle="modal" data-target="#contactModal">Contact</a>
+                </li>
+                </ul>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="https://www.google.co.id" id="cse-search-box">
+                <input type="hidden" name="cx" value="partner-pub-6279325630224392:9670052267" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="hidden" name="sa" value="search" />
+                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Kata Kunci" aria-label="Search">
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Cari</button>
+            </form>
+        </div>
+    </div>
+</nav>
+        <div class="container mb-5">
+
+        </div>
+        
+
+        <div class="container mb-5">
+            <div class="row">
+
+                <div class="col-sm-12 col-lg-8 mb-5 card">
+                    <article>
+                        <div class="">
+                           <div class="card-body p-md-5">
+                                
+                               <div class="post-header">
+                                    
+                                    <div class="mb-3">
+                                        <img src="/img/author.jpg" class="rounded-circle mr-1" width="32" height="32" />
+                                        <a class="align-middle text-info" href="https://twitter.com/elwinmusadi16">Elwin Musadi</a> 
+                                        <small class="align-middle text-muted">
+                                                | last update <time>24-11-2018</time>
+                                        </small>
+                                    </div>
+
+                                    <h2 class="card-title mb-3">Teknik Kompilasi - Analisis Leksikal</h2>
+                                    <hr>
+                                    
+                                    <div>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="post-content my-5">
+                                    <p>
+                                    <img class='card-img-top' 
+                                        src='/img/analisis-leksikal/analisis-leksikal.png'
+                                        alt='Teknik Kompilasi - Analisis Leksikal'>
+                                    </p>
+                                    <br/>
+                                    <p>Bagi yang pernah mengambil mata kuliah Teknik Kompilasi, pasti pernah mendengar tentang Analisis Leksikal.</p>
+
+<p>Apa itu Analisis Leksikal?</p>
+
+<p>Pada artikel ini kita akan membahas apa itu Analisis leksikal, bagaimana prosesnya dan contohnya.</p>
+
+<p>Menurut Wikipedia, Analisis leksikal adalah sebuah proses yang mendahului parsing sebuah rangkaian karakter. Ia menerima masukan serangkaian karakter (seperti dalam dokumen plaint-text atau source code) dan menghasilkan deretan simbol yang masing-masing dinamakan token; proses parsing akan lebih mudah dilakukan bila inputnya sudah berupah token. <a href="https://id.wikipedia.org/wiki/Analisis_leksikal">Wikipedia</a></p>
+
+<p>Itu adalah sedikit penjelasan tentang analisis leksikal, sekarang saya akan berikan contoh dari analisis leksikal. Disini saya mempunyai program yang menghitung presentase perjodohan dua ekor bebek. Berikut source code nya:</p>
+
+<pre><code class="language-java">package AnalisisLeksikal;
+import java.util.Scanner;
+/**
+ *
+ * @author Elwin Musadi
+ */
+
+public static void main(String[] args) {
+
+        Scaner owl=new Scanner(System.in);
+        
+        int tot1=0;
+        int tot2=0;
+        int joo; 
+        
+        System.out.print(&quot;Nama Bebek 1 : &quot;);
+        String a = owl.next();
+        System.out.print(&quot;Nama Bebek 2 : &quot;);
+        String b = owl.next() 
+        System.out.println(&quot;\n&quot;);
+        
+        for (int i = 0; i &lt; a.lengh(); ++i){
+            char chr = a.charAt(i);
+            int value = chr - 'a' + 1;   
+            total1 += value;
+        }
+        
+        System.out.println(&quot;\n&quot;);
+        System.out.println(&quot;Total untuk &quot;+a+&quot; : &quot;+tot1);
+        
+        for (int i = 0; i &lt; b.lengh(); ++i){
+            char chr = b.charAt(i);
+            int value = chr - 'a' + 1;   
+            total2 += value;
+        }
+        
+        System.out.println(&quot;Total untuk &quot;+b+&quot; : &quot;+tot2);
+        System.out.println(&quot;\n&quot;);
+        
+        if ( tot1&gt;tot2 ){
+            joo=(100*tot2/tot1);
+            System.out.println(&quot;Presentasi Perjodohan untuk &quot; + a + &quot; dan &quot; + b + &quot; :&quot; + joo + &quot;%&quot;);
+        
+        if ( tot1&lt;tot2 ){
+            joo=(100*tot1/tot2);
+            System.out.println(&quot;Presentasi Perjodohan untuk &quot; + a + &quot; dan &quot; + b + &quot; :&quot; + joo + &quot;%&quot;);
+        }
+    }
+}
+</code></pre>
+
+<p><br/>
+Eiits.. Jangan di Run dulu kodenya :D. Sekarang saya akan mengelompokan kode-kode diatas dalam masing-masing token, token yang saya maksud adalah identifier, keyword, literal, operator dan separator. Tapi, biar tidak membingungkan, saya jelaskan dulu arti dari setiap token yang ada.</p>
+
+<ol>
+<li><p>Identifier adalah token yang merepresentasikan nama. Dalam Java, identifier adalah nama yang diberikan untuk variable, class, atau method. Identifier boleh dimulai dengan huruf, underscore (<code>_</code>) atau tanda dollar (<code>$</code>). Identifier adalah case sensitive (membedakan huruf besar/ kecil) dan tidak ada batas maksimum.</p></li>
+
+<li><p>Keyword (kata kunci) adalah dentifier yang digunakan dalam Java untk suatu tujuan khusus. Daftar keyword Java sebagai berikut:</p>
+
+<pre><code>abstract, Boolean, Break, Byte, byvalue, Case, Catch, Char, 
+Class, Const, continue, default, Do, double, else, extends, 
+false, final, finally, float, for, goto, if, implements, import, 
+instanceof, In, Interface, Long, Native, New, Null, Package, 
+private, protected, public, return, short, static, Super, Switch, 
+synchronized, This, threadsafe, throwm Transient, True, Try, Void, while.
+</code></pre></li>
+
+<li><p>Literal adalah Penulisan besaran untuk variabel adalah penting, literal Java terdiri dari angka, karakter, dan string. Angka terdiri dari bilangan bulat (integer), bilangan mengambang (floating point), dan boolean. Nilai boolean untuk true dan false direpresentasikan sebagai <code>1</code> dan <code>0</code>.</p></li>
+
+<li><p>Operator menspesifikasikan evaluasi atau komputasi terhadap objek. Operan yang dioperasikan dapat berupa literal, variabel, atau nilai yang dikirim oleh metode atau fungsi.</p></li>
+
+<li><p>Separator digunakan untuk menginformasikan ke komplator Java mengenai adanya pengelompokkan di kode program.</p>
+
+<p>Berikut daftar separator yang digunakan dalam Java:</p></li>
+</ol>
+
+<table class="pure-table table table-responsive table-striped">
+<thead>
+<tr>
+<th align="center">Simbol</th>
+<th align="center">Nama</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">( )</td>
+<td align="center">Kurung</td>
+<td>Untuk menghimpun parameter dalam definisi dan pemanggilan method, juga digunakan untuk menyatakan tingkat pernyataan, menghimpun pernyataan, untuk pengaturan alur program, dan untuk menyatakan tipe cast (cast types).</td>
+</tr>
+
+<tr>
+<td align="center">{ }</td>
+<td align="center">Kurung Kurawal</td>
+<td>Untuk menghimpunnilai yang otomatis dimasukkan ke dalam array, digunakan juga untuk mendefinisikan blok program, untuk cakupan class, method, dan lokal.</td>
+</tr>
+
+<tr>
+<td align="center">[ ]</td>
+<td align="center">Kurung Siku</td>
+<td>Untuk menyatakan tipe array dan untuk membedakan nilai array.</td>
+</tr>
+
+<tr>
+<td align="center"><strong>;</strong></td>
+<td align="center">Titik Koma</td>
+<td>Pemisah pernyataan.</td>
+</tr>
+
+<tr>
+<td align="center"><strong>,</strong></td>
+<td align="center">Koma</td>
+<td>Pemisah urutan identifier dalam deklarasi variabel.</td>
+</tr>
+
+<tr>
+<td align="center"><strong>.</strong></td>
+<td align="center">Titik</td>
+<td>Untuk memisahkan nama paket dari sub-paket dan class dan untuk memisahkan variabel atau method dari variabel referensi.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Nah, sudah tau kan arti dari token-token diatas?. Sekarang mari kita lihat token apa saja yang ada didalam program perjodohan bebek.</p>
+
+<ol>
+<li><p>Pada Identifier, ada:</p>
+
+<pre><code class="language-java">package AnalisisLeksikal;
+public class perjodohanBebek
+tot1, tot2, a, b
+</code></pre></li>
+
+<li><p>Pada Keyword, ada:</p>
+
+<pre><code class="language-java">import, int, char, String, if, for, value, new, length, Scanner.in
+</code></pre></li>
+
+<li><p>Pada Operator, ada:</p>
+
+<pre><code class="language-java">+=
+=
+&lt;
+&gt;
+</code></pre>
+
+<hr></li>
+</ol>
+
+<p>Oke, pada kode program diatas banyak yang saya salah ketik dan menyebabkan banyak error, jadi saya akan lakukan <strong>analisis leksikal</strong> (dalam Java (Netbeans IDE) akan diberitahukan pada line berapa letak kesalahan/error-nya).</p>
+
+<p>Silahkan anda buka dan lihat kembali kode program diatas, lalu kita analisis bersama-sama.</p>
+
+<p>Pada fungsi Scanner,</p>
+
+<pre><code class="language-java">Scaner owl = new Scanner(System.in); // Harusnya Scanner, bukan Scaner.
+</code></pre>
+
+<p><br/>
+Pada deklarasi variabel b,</p>
+
+<pre><code class="language-java">String b = owl.next() // Tidak ada separator titik koma (;).
+</code></pre>
+
+<p><br/>
+Pada perulangan for,</p>
+
+<pre><code class="language-java">for (int i = 0; i &lt; a.lengh(); ++i) { // Kurang huruf t pada kata length.
+</code></pre>
+
+<p><br/>
+Pada percabangan if yang pertama,</p>
+
+<pre><code class="language-java">if ( tot1&gt;tot2 ){
+    joo=(100*tot2/tot1);
+    System.out.println(&quot;Presentasi Perjodohan untuk &quot; + a + &quot; dan &quot; + b + &quot; :&quot; + joo + &quot;%&quot;);
+    // Kurang separator &quot;}&quot; untuk menutup pernyataan if.
+</code></pre>
+
+<p>Setelah kita analisa dan perbaiki, maka source code akan menjadi seperti dibawah ini:</p>
+
+<pre><code class="language-java">package AnalisisLeksikal;
+import java.util.Scanner;
+/**
+ *
+ * @author Elwin Musadi
+ */
+public class perjodohanBebek {
+    public static void main(String[] args) {
+
+        Scanner owl=new Scanner(System.in);
+        
+        int tot1=0;
+        int tot2=0;
+        int joo; 
+        
+        System.out.print(&quot;Nama Bebek 1 : &quot;);
+        String a = owl.next();
+        System.out.print(&quot;Nama Bebek 2 : &quot;);
+        String b = owl.next(); 
+        System.out.println(&quot;\n&quot;);
+        
+        for (int i = 0; i &lt; a.length(); ++i){
+            char chr = a.charAt(i);
+            int value = chr - 'a' + 1;   
+            tot1 += value;
+        }
+        
+        System.out.println(&quot;\n&quot;);
+        System.out.println(&quot;Total untuk &quot;+a+&quot; : &quot;+tot1);
+        
+        for (int i = 0; i &lt; b.length(); ++i){
+            char chr = b.charAt(i);
+            int value = chr - 'a' + 1;   
+            tot2 += value;
+        }
+        
+        System.out.println(&quot;Total untuk &quot;+b+&quot; : &quot;+tot2);
+        System.out.println(&quot;\n&quot;);
+        
+        if ( tot1&gt;tot2 ){
+            joo=(100*tot2/tot1);
+            System.out.println(&quot;Presentasi Perjodohan untuk &quot; + a + &quot; dan &quot; + b + &quot; :&quot; + joo + &quot;%&quot;);
+        }
+        
+        if ( tot1&lt;tot2 ){
+            joo=(100*tot1/tot2);
+            System.out.println(&quot;Presentasi Perjodohan untuk &quot; + a + &quot; dan &quot; + b + &quot; :&quot; + joo + &quot;%&quot;);
+        }
+    }
+}
+</code></pre>
+
+<p>Dan ini hasil outputnya:</p>
+
+<p><figure><img src="img/analisis-leksikal/hasil.png" alt="hasilperjodohan"></figure></p>
+
+<p><br/>
+Sekian dari saya, semoga dapat bermanfaat. Mohon maaf jika masih ada kesalahan, silahkan tinggalkan komentar dibawah.</p>
+
+<p><a href="http://rudihadjo.blogspot.com/2015/10/tugas-teknik-kompilasi-analisis-leksikal.html">Sumber</a></p>
+
+                                </div>
+                                <div class="post-footer">
+                                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'elwinmusadi';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                       <aside>
+
+    <div class="widget">
+        <a href="http://projects.id/petani_kode" target="_blank">
+        <img src="http://lorempixel.com/360/250" alt="Proyek Petani Kode"/>
+        </a>
+    </div>
+    
+    </aside>
+                    </div>
+            </div>
+        </div>
+
+        <footer class="border border-bottom-0 border-left-0 border-right-0">
+    <div class="container pt-3 pb-3 pt-md-5 pb-md-5">
+        <div class="row">
+            <div class="col">
+
+                &copy; 2018 <a href="https://elwinmusadi.github.io">ElwinMusadi</a> | Theme by <a href="https://www.petanikode.com" target="blank">Petani Kode</a> | Made Using <a href="https://gohugo.io" target="blank">Hugo 0.51</a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+        <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/prism.js"></script>
+    </body>
+</html>

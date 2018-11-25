@@ -5,10 +5,22 @@
     <link>https://elwinmusadi.github.io/</link>
     <description>Recent content on ElwinMusadi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 23 Nov 2018 16:48:41 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 Nov 2018 16:03:36 +0800</lastBuildDate>
     
 	<atom:link href="https://elwinmusadi.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Teknik Kompilasi - Analisis Leksikal</title>
+      <link>https://elwinmusadi.github.io/artikel/analisis-leksikal/</link>
+      <pubDate>Sat, 24 Nov 2018 16:03:36 +0800</pubDate>
+      
+      <guid>https://elwinmusadi.github.io/artikel/analisis-leksikal/</guid>
+      <description>Bagi yang pernah mengambil mata kuliah Teknik Kompilasi, pasti pernah mendengar tentang Analisis Leksikal.
+Apa itu Analisis Leksikal?
+Pada artikel ini kita akan membahas apa itu Analisis leksikal, bagaimana prosesnya dan contohnya.
+Menurut Wikipedia, Analisis leksikal adalah sebuah proses yang mendahului parsing sebuah rangkaian karakter. Ia menerima masukan serangkaian karakter (seperti dalam dokumen plaint-text atau source code) dan menghasilkan deretan simbol yang masing-masing dinamakan token; proses parsing akan lebih mudah dilakukan bila inputnya sudah berupah token.</description>
+    </item>
     
     <item>
       <title>Tentang Saya : Programmer Pemula</title>
