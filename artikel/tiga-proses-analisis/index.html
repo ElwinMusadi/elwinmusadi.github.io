@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tiga Proses Analisis dalam Teknik Kompilasi</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+<meta itemprop="name" content="Tiga Proses Analisis dalam Teknik Kompilasi">
+<meta itemprop="description" content="Halo! Selamat datang lagi di blog sederhana ini.
+Kali ini saya akan membahas sedikit tentang apa itu Teknik Kompilasi dan beberapa proses analisa didalamnya.
+Apa itu Teknik Kompilasi? Teknik Kompilasi merupakan teknik dalam melakukan pembacaan suatu program yang ditulis dalam bahasa sumber, kemudian diterjemahkan ke dalam suatu bahasa lain yang disebut bahasa sasaran. Dalam melakukan proses penerjemahan tersebut, sudah tentu kompilator akan melaporkan adanya keanehan-keanehan atau kesalahan yang mungkin ditemukannya.">
+
+
+<meta itemprop="datePublished" content="2018-11-27T14:41:23&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-27T14:41:23&#43;08:00" />
+<meta itemprop="wordCount" content="755">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+<meta property="og:title" content="Tiga Proses Analisis dalam Teknik Kompilasi" />
+<meta property="og:description" content="Halo! Selamat datang lagi di blog sederhana ini.
+Kali ini saya akan membahas sedikit tentang apa itu Teknik Kompilasi dan beberapa proses analisa didalamnya.
+Apa itu Teknik Kompilasi? Teknik Kompilasi merupakan teknik dalam melakukan pembacaan suatu program yang ditulis dalam bahasa sumber, kemudian diterjemahkan ke dalam suatu bahasa lain yang disebut bahasa sasaran. Dalam melakukan proses penerjemahan tersebut, sudah tentu kompilator akan melaporkan adanya keanehan-keanehan atau kesalahan yang mungkin ditemukannya." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://elwinmusadi.github.io/artikel/tiga-proses-analisis/" /><meta property="article:published_time" content="2018-11-27T14:41:23&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-27T14:41:23&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tiga Proses Analisis dalam Teknik Kompilasi"/>
+<meta name="twitter:description" content="Halo! Selamat datang lagi di blog sederhana ini.
+Kali ini saya akan membahas sedikit tentang apa itu Teknik Kompilasi dan beberapa proses analisa didalamnya.
+Apa itu Teknik Kompilasi? Teknik Kompilasi merupakan teknik dalam melakukan pembacaan suatu program yang ditulis dalam bahasa sumber, kemudian diterjemahkan ke dalam suatu bahasa lain yang disebut bahasa sasaran. Dalam melakukan proses penerjemahan tersebut, sudah tentu kompilator akan melaporkan adanya keanehan-keanehan atau kesalahan yang mungkin ditemukannya."/>
+
+
+
+
+<link rel="icon" href="/img/Logo-KodingLabs.png" class="d-inline-block align-top rounded-circle" />
+
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/prism.css" />
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-80517197-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info sticky-top" style="z-index:1025">
+        <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+        
+    <div class="container">    
+            
+        <a style="font-family: 'Allerta Stencil', sans-serif"; class="navbar-brand" href="https://elwinmusadi.github.io"><img src="/img/Logo-KodingLabs.png" width="30" height="30" class="d-inline-block align-top"
+            alt=""> ElwinMusadi</a>
+           
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://elwinmusadi.github.io">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!" data-toggle="modal" data-target="#contactModal">Contact</a>
+                </li>
+                </ul>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="https://www.google.co.id" id="cse-search-box">
+                <input type="hidden" name="cx" value="partner-pub-6279325630224392:9670052267" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="hidden" name="sa" value="search" />
+                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Kata Kunci" aria-label="Search">
+                <button class="btn btn-warning my-2 my-sm-0" type="submit">Cari</button>
+            </form>
+        </div>
+    </div>
+</nav>
+        <div class="container mb-5">
+
+        </div>
+        
+
+        <div class="container mb-5">
+            <div class="row">
+
+                <div class="col-sm-12 col-lg-8 mb-5 card">
+                    <article>
+                        <div class="">
+                           <div class="card-body p-md-5">
+                                
+                               <div class="post-header">
+                                    
+                                    <div class="mb-3">
+                                        <img src="/img/author.jpg" class="rounded-circle mr-1" width="32" height="32" />
+                                        <a class="align-middle text-info" href="https://twitter.com/elwinmusadi16">Elwin Musadi</a> 
+                                        <small class="align-middle text-muted">
+                                                | last update <time>27-11-2018</time>
+                                        </small>
+                                    </div>
+
+                                    <h2 class="card-title mb-3">Tiga Proses Analisis dalam Teknik Kompilasi</h2>
+                                    <hr>
+                                    
+                                    <div>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="post-content my-5">
+                                    <p>
+                                    <img class='card-img-top' 
+                                        src='/img/tiga-proses-analisis/tiga-proses-analisis.png'
+                                        alt='Tiga Proses Analisis dalam Teknik Kompilasi'>
+                                    </p>
+                                    <br/>
+                                    
+
+<p>Halo! Selamat datang lagi di blog sederhana ini.</p>
+
+<p>Kali ini saya akan membahas sedikit tentang apa itu Teknik Kompilasi dan beberapa proses analisa didalamnya.</p>
+
+<h3 id="apa-itu-teknik-kompilasi">Apa itu Teknik Kompilasi?</h3>
+
+<p>Teknik Kompilasi merupakan teknik dalam melakukan pembacaan suatu program yang ditulis dalam bahasa sumber, kemudian diterjemahkan ke dalam suatu bahasa lain yang disebut bahasa sasaran. Dalam melakukan proses penerjemahan tersebut, sudah tentu kompilator akan melaporkan adanya keanehan-keanehan atau kesalahan yang mungkin ditemukannya. Proses penerjemahan yang dilakukan oleh kompilator ini disebut proses kompilasi (compiling).</p>
+
+<p>Dalam Teknik Kompilasi dikenal 3 proses analisis, yaitu:
+- Proses Analisis Leksikal
+- Proses Analisis Sintaksis atau Sintaks
+- Proses Analisis Simantik</p>
+
+<h4 id="pengertian-analisis-leksikal-scanner">Pengertian Analisis Leksikal (Scanner)</h4>
+
+<p>Analisis leksikal atau scanner bertugas mengidentifikasi semua besaran pembangun bahasa (leksikal) yang ada pada source code (source code). Scanner menerima masukan source code berupa serangkaian karakter kemudian memilah-milahnya menjadi bagian-bagian kecil yang mempunyai satu arti yang disebut token, seperti : konstanta, nama variabel, keyword, operator. Token-token ini akan menjadi masukan bagi analisis selanjutnya yaitu analisis sintaksis.</p>
+
+<p>Dari fungsi scanner secara umum seperti telah disebutkan di atas, maka tugasscanner secara rinci adalah:
+1. Membaca serangkaian karakter dari source code
+2. Mengenalinya ke dalam satuan leksikal
+3. Mengubahnya menjadi token dan menentukan jenis tokennya.
+4. Mengirimkan token ke proses analisis selanjutnya, yaitu analisis sintaksis
+5. Mengabaikan karakter white space (spasi, enter, ganti baris, penanda akhir file) dan komentar (remark) apabila ada di dalam source code
+6. Menangani error
+7. Menangani tabel simbol</p>
+
+<p>Scanner bekerja berdasarkan prinsip mesin finite state automata (FSA). Diagram keadaan dapat digunakan untuk membantu mengkonstruksi scanner.</p>
+
+<p>Untuk lebih lengkapnya tentang Analisis Leksikal, telah saya tulis secara rinci di artikel <a href="https://elwinmusadi.github.io/artikel/analisis-leksikal/" title="Analisis Leksikal">ini</a></p>
+
+<h4 id="pengertian-analisis-sintaks-parser">Pengertian Analisis Sintaks (Parser)</h4>
+
+<p>Analisis sintak lebih sering disebut penguraian (parsing). Tujuan utama dari analisis sintak adalah memeriksa apakah urutan token-token yang dihasilkan sesuai dengan tata bahasa dari bahasa yang bersangkutan. Misalnya bahasa C mengenal kalimat: jumlah++; yang berarti menaikkan harga variabel jumlah dengan angka satu. Tetapi kalimat di atas akan salah jika dikompilasi dengan kompilator bahasa Pascal, karena tidak sesuai dengan tata bahasa Pascal.</p>
+
+<p>Dalam analisis sintak, tata bahasa yang digunakan untuk mendefinisikan aturan sintak suatu bahasa disebut tata bahasa bebas konteks (Context Free Grammar). Tata bahasa ini memiliki empat komponen penting yaitu himpunan simbol terminal, himpunan non-terminal, himpunan produksi dan simbol awal. Dalam bahasa pemrograman, yang disebut terminal adalah token. Contoh terminal adalah token. Contoh token misalnya kata kunci (keyword) if, while, dan identifier serta bilangan. Sedangkan non-terminal merupakan variabel-variabel sintak yang menyatakan himpunan terminal maupun non-terminal.</p>
+
+<p>Dalam proses parsing terjadi proses penggantian suatu non terminal dengan sederetan himpunan non terminal dan terminal yang berada dalam sisi kanan produksnya. Proses ini disebut sebagai derivasi. Contohnya non-terminal if_stmt merupakan himpunan terminal <code>if</code>, <code>then</code>, <code>else</code>, dan non-terminal <code>expr</code> dan <code>stmt</code>, yang membentuk aturan produksi : <code>if_stmt ?? if expr then stmt else stmt</code>. Dari semua simbol non-terminal yang digunakan, ada satu simbol yang bertindak sebagai simbol awal, yaitu simbol yang pertama kali diderivasi. Aturan produksi menggambarkan bagaimana kombinasi non-terminal dan terminal yang benar menurut tata bahasa yanbg bersangkutan. Dalam proses penguraian, token-token yang dihasilkan dalam analisis leksikal dibentuk menjadi pohon urai (parse tree).</p>
+
+<p>Pohon urai merupakan hasil derivasi dari aturan – aturan produksi.
+Ada dua jenis derivasi, yaitu derivasi terkiri (<em>Left Most Derivation</em>) dan derivasi terkanan (<em>Right Most Derivation</em>). Derivasi terkiri akan menderivasi suatu aturan produksi mulai dari non-terminal yang paling kiri. Sedangkan derivasi terkanan akan menderivasi suatu aturan produksi mulai dari non-terminal yang paling kanan.</p>
+
+<p>Jika proses derivasi aturan-aturan produksi suatu tata bahasa terhadap suatu masukan menghasilkan lebih dari satu pohon urai maka tata bahasa tersebut dikatakan rancu (ambiguous).</p>
+
+<h4 id="pengertian-analisis-simantik">Pengertian Analisis Simantik</h4>
+
+<p>Analisis semantik berperan dalam memeriksa kesalahan-kesalahan yang bersifat semantik. Salah satu peranan analisis semantik yang penting adalah pemeriksaan tipe variabel.</p>
+
+<p>Contohnya operator <code>*</code> hanya digunakan untuk operand dengan tipe integer ataupun real. Sedangkan operator <code>and</code>, <code>or</code>, digunakan hanya untuk operand dengan dengan tipe boolean.</p>
+
+<p>Peranan lain dari analisis semantik adalah memeriksa keunikan suatu nama. Misalnya dalam Pascal, nama variabel global tidak boleh sama dengan prosedur atau nama fungsi. Dalam bahasa C, jika suatu nama konstanta didefinisikan lebih dari satu kali, maka akan diperiksa kesamaan nilai kedua konstanta.</p>
+
+<p>Analisis semantik dapat dilakukan dengan menggunakan salah satu dari dua bentuk notasi, yaitu Definisi Berdasarkan Sintak (DBS) dan Skema Translasi. Definisi Berdasarkan Sintak (DBS) merupakan gabungan tata bahasa dengan himpunan aturan semantik yang akan menentukan struktur sintak dari suatu masukan. Aturan semantik digunakan untuk menghitung atribut, misalnya tipe atau nilai konstanta, yang berkaitan dengan simbol dalam aturan produksi.</p>
+
+<p>Oke, sekian dulu penjelasan mengenai Teknik Kompilasi dan prosesnya, jika ada yang ingin ditanyakan silahkan tulis di komentar :).</p>
+
+                                </div>
+                                <div class="post-footer">
+                                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'elwinmusadi';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-4">
+                       <aside>
+
+    <div class="widget">
+        <a href="http://projects.id/petani_kode" target="_blank">
+        <img src="http://lorempixel.com/360/250" alt="Proyek Petani Kode"/>
+        </a>
+    </div>
+    
+    </aside>
+                    </div>
+            </div>
+        </div>
+
+        <footer class="border border-bottom-0 border-left-0 border-right-0">
+    <div class="container pt-3 pb-3 pt-md-5 pb-md-5">
+        <div class="row">
+            <div class="col">
+
+                &copy; 2018 <a href="https://elwinmusadi.github.io">ElwinMusadi</a> | Theme by <a href="https://www.petanikode.com" target="blank">Petani Kode</a> | Made Using <a href="https://gohugo.io" target="blank">Hugo 0.51</a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+        <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/prism.js"></script>
+    </body>
+</html>

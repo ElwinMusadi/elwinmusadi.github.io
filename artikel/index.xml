@@ -5,10 +5,21 @@
     <link>https://elwinmusadi.github.io/artikel/</link>
     <description>Recent content in Artikels on ElwinMusadi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 24 Nov 2018 16:03:36 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Nov 2018 14:41:23 +0800</lastBuildDate>
     
 	<atom:link href="https://elwinmusadi.github.io/artikel/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tiga Proses Analisis dalam Teknik Kompilasi</title>
+      <link>https://elwinmusadi.github.io/artikel/tiga-proses-analisis/</link>
+      <pubDate>Tue, 27 Nov 2018 14:41:23 +0800</pubDate>
+      
+      <guid>https://elwinmusadi.github.io/artikel/tiga-proses-analisis/</guid>
+      <description>Halo! Selamat datang lagi di blog sederhana ini.
+Kali ini saya akan membahas sedikit tentang apa itu Teknik Kompilasi dan beberapa proses analisa didalamnya.
+Apa itu Teknik Kompilasi? Teknik Kompilasi merupakan teknik dalam melakukan pembacaan suatu program yang ditulis dalam bahasa sumber, kemudian diterjemahkan ke dalam suatu bahasa lain yang disebut bahasa sasaran. Dalam melakukan proses penerjemahan tersebut, sudah tentu kompilator akan melaporkan adanya keanehan-keanehan atau kesalahan yang mungkin ditemukannya.</description>
+    </item>
     
     <item>
       <title>Teknik Kompilasi - Analisis Leksikal</title>
@@ -41,7 +52,7 @@ smileJava(){ setBackground(new Color(227, 227, 227));// warna background } publi
       <pubDate>Thu, 22 Nov 2018 09:52:16 +0800</pubDate>
       
       <guid>https://elwinmusadi.github.io/artikel/menggambar-rumah-netbeans/</guid>
-      <description>Selamat datang di blog saya, kali ini kita akan belajar menggunakan JFrame dan Graphics pada Java untuk menggambar garis sederhana. Garis-garis ini akan kita hubungkan menjadi sebuah gambar rumah :D.
+      <description>Selamat datang di blog ElwinMusadi, kali ini kita akan belajar menggunakan JFrame dan Graphics pada Java untuk menggambar garis sederhana. Garis-garis ini akan kita hubungkan menjadi sebuah gambar rumah :D.
 Editor dan Compiler yang saya gunakan disini adalah Netbeans IDE versi 8.2
 Jika belum punya silahkan download dan instal melalui situs resminya https://netbeans.org/
 Baik kita mulai,
